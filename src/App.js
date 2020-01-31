@@ -1,26 +1,57 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import Header from './components/Header/Header';
+import axios from 'axios';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      musics: []
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get('/api/musics')
+      .then(response => {
+        this.setState({ musics: response.data });
+        console.log(response.data);
+      })
+      .catch();
+  }
+
+  render() {
+    const { musics } = this.state;
+    const mappedMusic = musics.map(val => {
+      return (
+        <div key={val.id}>
+          <div className='card-title'>
+            <h1>Artist Name: {val.artist}</h1>
+            <h1>Song:{val.name}</h1>
+          </div>
+          <div className='card-content'>
+            <iframe
+              width='300'
+              height='200'
+              src={`https://www.youtube.com/embed/${val.youtube}`}
+              frameborder='0'
+              allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+              allowfullscreen
+            ></iframe>
+            <p>{val.lyrics}</p>
+          </div>
+        </div>
+      );
+    });
+    return (
+      <div className='App'>
+        <Header />
+        {mappedMusic}
+      </div>
+    );
+  }
 }
 
 export default App;

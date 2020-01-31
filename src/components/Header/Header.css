@@ -1,0 +1,13 @@
+nav {
+  background-color: rgb(199, 255, 255);
+  width: 100%;
+  margin-bottom: 65px;
+}
+
+li {
+  list-style-type: none;
+}
+
+li a {
+  text-decoration: none;
+}
