@@ -28,8 +28,11 @@ body {
 
 .card-content p {
   overflow: scroll;
-  height: 30vh;
+  height: 36vh;
   width: 55%;
+  font-size: 30px;
+  -webkit-user-modify: read-write-plaintext-only;
+  text-align: center;
 }
 
 .card-content button {

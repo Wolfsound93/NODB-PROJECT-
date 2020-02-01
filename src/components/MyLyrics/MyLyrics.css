@@ -3,13 +3,24 @@ body {
   width: 100%;
 }
 
+.input-container {
+  display: flex;
+}
+
 .lyrics-input {
   background-color: rgb(235, 235, 235);
+  margin-left: 21rem;
+  width: 29rem;
+  height: 14rem;
+  margin-top: 6rem;
 }
 
 h2 {
   color: rgb(0, 0, 0);
+  text-align: center;
 }
 
 .user-input {
+  display: grid;
+  justify-content: center;
 }
