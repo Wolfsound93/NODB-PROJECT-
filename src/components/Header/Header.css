@@ -1,11 +1,28 @@
 nav {
   background-color: rgb(199, 255, 255);
-  width: 100%;
-  margin-bottom: 65px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+}
+
+nav i {
+  font-size: 37px;
+  color: rgb(0, 24, 88);
 }
 
 li {
   list-style-type: none;
+  margin-left: 25px;
+  cursor: pointer;
+  user-select: none;
 }
 
 li a {

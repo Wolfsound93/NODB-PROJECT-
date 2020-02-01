@@ -6,7 +6,11 @@ let getMusics = (req, res) => {
 
 let addMusic = () => {};
 
-let editMusic = () => {};
+let editMusic = (req, res) => {
+  const targetIndex = data.findIndex(val => val.id === +req.params.id);
+  data[targetIndex].favorites = req.body.favorites;
+  res.status(200).json(data);
+};
 
 let deleteMusic = () => {};
 

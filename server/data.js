@@ -4,7 +4,7 @@ let data = [
     artist: 'LSD Sia, Diplo, Labrinth',
     name: 'Thunderclouds',
     youtube: 'kg1BljLu9YY',
-    lyrics: `[Verse 1: Sia & Labrinth]
+    lyrics: `Verse 1: Sia & Labrinth
     We got a ride, we got the night
     I got the bottle, you got the light
     We got the stars (Stars)
@@ -76,7 +76,8 @@ let data = [
     We can't live on
     Without the rhythm
     We can't live on
-    Without the rhythm`
+    Without the rhythm`,
+    favorites: false
   },
   {
     id: 1,
@@ -182,7 +183,8 @@ let data = [
     Knock, knock-knock, knock-knock, YAWK
     (Gangsta shit, gangsta shit)
     Knock, knock-knock, knock-knock, YAWK
-    (Gangsta shit, gangsta shit)`
+    (Gangsta shit, gangsta shit)`,
+    favorites: false
   },
   {
     id: 2,
@@ -260,8 +262,8 @@ let data = [
     So much grams, unzip the bag
     Dip in my hand then I palm trees
     So when you throw shade, it could never harm me
-    (So when you throw shade, it could never harm me)
-    `
+    (So when you throw shade, it could never harm me)`,
+    favorites: false
   },
   {
     id: 3,
@@ -352,8 +354,8 @@ let data = [
     Ay, what you think we in the neighborhood for?
     Standin' at the corner store with a pocket full of dough
     I'll be damned if a nigga wife a hood ho
-    Learned that from UGK back in "Pocket Full of Stones" nigga
-    `
+    Learned that from UGK back in "Pocket Full of Stones" nigga`,
+    favorites: false
   },
   {
     id: 4,
@@ -407,8 +409,8 @@ let data = [
     Play with the giants, little bit too extravagant, yeah now
     Night, everyone feel my vibe, yeah
     In the broad day, everyone hypnotizing, yeah
-    I'm okay and I take the cake, yeah
-    `
+    I'm okay and I take the cake, yeah`,
+    favorites: false
   },
   {
     id: 5,
@@ -525,8 +527,8 @@ let data = [
     Got me on that go dumb shit
     Got me on that go dumb shit, man
     Trap mode in this muhfucka, hotter than a bitch
-    Ayo, pour up, I need some more drank
-    `
+    Ayo, pour up, I need some more drank`,
+    favorites: false
   }
 ];
 

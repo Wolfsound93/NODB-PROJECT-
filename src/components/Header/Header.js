@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import '../Header/Header.css';
-function Header() {
+function Header(props) {
   return (
     <nav>
-      <h1>Lyrics-Keys</h1>
+      <h1>
+        <i className='fas fa-headphones'> </i>
+        <span> Lyrics-Keys</span>
+      </h1>
       <ul>
-        <li>
-          <a href='#'>home</a>
-          <a href='#'>favorites</a>
-          <a href='#'>my lyrics</a>
-        </li>
+        <li onClick={() => props.changePage('home')}>home</li>
+        <li onClick={() => props.changePage('favorites')}>favorites</li>
+        <li onClick={() => props.changePage('my lyrics')}>my lyrics</li>
       </ul>
     </nav>
   );
