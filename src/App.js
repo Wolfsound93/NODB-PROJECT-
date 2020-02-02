@@ -12,6 +12,7 @@ class App extends Component {
     this.state = {
       musics: [],
       page: 'home',
+      newLyrics: '',
       toggleFav: false
     };
   }
@@ -25,22 +26,34 @@ class App extends Component {
       .catch();
   }
 
-  postState = results => {
-    this.setState({ musics: results });
+  changeFavorites = val => {
+    console.log(val);
   };
 
   changePage = page => {
     this.setState({ page });
   };
 
-  changeFavorites = id => {
+  createCard = newCard => {
+    this.setState({ musics: newCard });
+  };
+
+  removeCard = id => {
     axios
-      .put(`/api/musics/${id}`, {
-        favorites: this.state.toggleFav
-      })
-      .then(res => this.postState(res.data))
-      .catch(error => console.log(error));
-    // console.log(id);
+      .delete(`/api/musics/${id}`)
+      .then(res => this.setState({ musics: res.data }));
+  };
+
+  newLyrics = e => {
+    this.setState({ newLyrics: e.target.value });
+    console.log(e.target.value);
+  };
+
+  editLyrics = id => {
+    let newLyrics = this.state.newLyrics;
+    axios
+      .put(`/api/musics/${id}`, newLyrics)
+      .then(res => this.setState({ musics: res.data }));
   };
 
   render() {
@@ -48,7 +61,7 @@ class App extends Component {
     const mappedMusic = musics.map(val => {
       // console.log(val.id);
       return (
-        <div key={val.id}>
+        <section key={val.id}>
           <div className='card-title'>
             <h1>Artist Name: {val.artist}</h1>
             <h1>Song:{val.name}</h1>
@@ -63,19 +76,23 @@ class App extends Component {
                 allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
                 allowfullscreen
               ></iframe>
-              <button onClick={() => this.changeFavorites(val.id)}>
+              <button onClick={() => this.changeFavorites(val)}>
                 Add to Favorites
               </button>
+              <button onClick={this.editLyrics}>Edit The Lyrics</button>
+              <button onClick={() => this.removeCard(val.id)}>
+                Delete Song
+              </button>
             </div>
-            <p>{val.lyrics}</p>
+            <p onChange={this.newLyrics}>{val.lyrics}</p>
           </div>
-        </div>
+        </section>
       );
     });
 
     let myRoutes = {
       favorites: <Favorites />,
-      'my lyrics': <MyLyrics />,
+      'my lyrics': <MyLyrics createCard={this.createCard} />,
       home: mappedMusic
     };
 
@@ -83,7 +100,6 @@ class App extends Component {
       <div className='App'>
         <Header changePage={this.changePage} />
         {myRoutes[this.state.page]}
-        {/* <Favorites music={this.state.musics} /> */}
       </div>
     );
   }
