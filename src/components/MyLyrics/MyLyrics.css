@@ -9,10 +9,11 @@ body {
 
 .lyrics-input {
   background-color: rgb(235, 235, 235);
-  margin-left: 21rem;
+  margin-left: 35rem;
   width: 29rem;
-  height: 14rem;
-  margin-top: 6rem;
+  height: 20rem;
+  margin-top: 14rem;
+  border-radius: 35px;
 }
 
 h2 {
@@ -23,4 +24,19 @@ h2 {
 .user-input {
   display: grid;
   justify-content: center;
+}
+
+input.lyrics-box {
+  width: 18rem;
+  height: 7rem;
+  margin-top: 1rem;
+  text-decoration: underline;
+  font-size: 16px;
+}
+
+.crt-btn {
+  border-radius: 1rem;
+  width: 7rem;
+  margin-left: 5rem;
+  margin-top: 24px;
 }

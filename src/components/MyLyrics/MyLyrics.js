@@ -56,11 +56,14 @@ class MyLyrics extends Component {
               onChange={this.inputChange}
             />
             <input
+              className='lyrics-box'
               name='lyrics'
-              placeholder='type your lyrics'
+              placeholder='type your lyrics here!'
               onChange={this.inputChange}
             />
-            <button onClick={this.addCard}>Create the Card</button>
+            <button className='crt-btn' onClick={this.addCard}>
+              Create the Card
+            </button>
           </div>
         </div>
       </div>
