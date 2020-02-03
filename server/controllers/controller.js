@@ -15,7 +15,7 @@ let editMusic = (req, res) => {
   const { newLyrics } = req.body;
   const { id } = req.params;
   let dataIndex = data.findIndex(val => val.id == id);
-  data[dataIndex].lyrics = lyrics;
+  data[dataIndex].lyrics = newLyrics;
   res.status(200).json(data);
 };
 

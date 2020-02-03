@@ -4,6 +4,7 @@ import axios from 'axios';
 import './App.css';
 import Favorites from './components/Favorites/Favorites';
 import MyLyrics from './components/MyLyrics/MyLyrics';
+import EditLyrics from './components/EditLyrics/EditLyrics';
 
 class App extends Component {
   constructor() {
@@ -13,7 +14,7 @@ class App extends Component {
       musics: [],
       page: 'home',
       newLyrics: '',
-      toggleFav: false
+      favorites: []
     };
   }
 
@@ -28,6 +29,7 @@ class App extends Component {
 
   changeFavorites = val => {
     console.log(val);
+    this.setState({ favorites: [...this.state.favorites, val] });
   };
 
   changePage = page => {
@@ -44,54 +46,42 @@ class App extends Component {
       .then(res => this.setState({ musics: res.data }));
   };
 
-  newLyrics = e => {
-    this.setState({ newLyrics: e.target.value });
-    console.log(e.target.value);
-  };
+  // removeFromFav = () => {
+  //   let dataIndex = data.findIndex(val => val.id == id);
+  //   data.splice(dataIndex, 1);
+  //   res.status(200).json(data);
+  // }
 
   editLyrics = id => {
     let newLyrics = this.state.newLyrics;
-    axios
-      .put(`/api/musics/${id}`, newLyrics)
-      .then(res => this.setState({ musics: res.data }));
+    axios.put(`/api/musics/${id}`, { newLyrics }).then(res => {
+      this.setState({ musics: res.data });
+    });
+  };
+
+  newLyrics = e => {
+    this.setState({ newLyrics: e.target.innerText });
+    console.dir(e.target.innerText);
   };
 
   render() {
+    console.log(this.state.newLyrics);
     const { musics } = this.state;
     const mappedMusic = musics.map(val => {
       // console.log(val.id);
       return (
-        <section key={val.id}>
-          <div className='card-title'>
-            <h1>Artist Name: {val.artist}</h1>
-            <h1>Song:{val.name}</h1>
-          </div>
-          <div className='card-content'>
-            <div className='AddBtn'>
-              <iframe
-                width='300'
-                height='210'
-                src={`https://www.youtube.com/embed/${val.youtube}`}
-                frameborder='0'
-                allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-                allowfullscreen
-              ></iframe>
-              <button onClick={() => this.changeFavorites(val)}>
-                Add to Favorites
-              </button>
-              <button onClick={this.editLyrics}>Edit The Lyrics</button>
-              <button onClick={() => this.removeCard(val.id)}>
-                Delete Song
-              </button>
-            </div>
-            <p onChange={this.newLyrics}>{val.lyrics}</p>
-          </div>
-        </section>
+        <EditLyrics
+          val={val}
+          removeCard={this.removeCard}
+          editLyrics={this.editLyrics}
+          newLyrics={this.newLyrics}
+          changeFavorites={this.changeFavorites}
+        />
       );
     });
 
     let myRoutes = {
-      favorites: <Favorites />,
+      favorites: <Favorites favorites={this.state.favorites} />,
       'my lyrics': <MyLyrics createCard={this.createCard} />,
       home: mappedMusic
     };

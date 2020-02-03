@@ -26,17 +26,17 @@ h2 {
   justify-content: center;
 }
 
-input.lyrics-box {
-  width: 18rem;
-  height: 7rem;
-  margin-top: 1rem;
-  text-decoration: underline;
-  font-size: 16px;
+textarea.lyrics-box {
+  margin-top: 10px;
+  width: 25rem;
+  height: 8rem;
+  font-size: 20px;
 }
 
 .crt-btn {
   border-radius: 1rem;
   width: 7rem;
   margin-left: 5rem;
-  margin-top: 24px;
+  margin-top: 14px;
+  margin-left: 136px;
 }

@@ -31,7 +31,7 @@ class MyLyrics extends Component {
     axios.post('/api/musics', newCard).then(res => {
       this.props.createCard(res.data);
     });
-    this.state.id += 1;
+    this.setState({ id: this.state.id + 1 });
   };
 
   render() {
@@ -55,12 +55,18 @@ class MyLyrics extends Component {
               placeholder='type in your youtube id'
               onChange={this.inputChange}
             />
-            <input
+            {/* <input
               className='lyrics-box'
               name='lyrics'
               placeholder='type your lyrics here!'
               onChange={this.inputChange}
-            />
+            /> */}
+            <textarea
+              className='lyrics-box'
+              name='lyrics'
+              placeholder='type your lyrics here!'
+              onChange={this.inputChange}
+            ></textarea>
             <button className='crt-btn' onClick={this.addCard}>
               Create the Card
             </button>
