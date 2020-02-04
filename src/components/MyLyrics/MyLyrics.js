@@ -46,7 +46,7 @@ class MyLyrics extends Component {
               onChange={this.inputChange}
             />
             <input
-              name='song'
+              name='name'
               placeholder='type the name of the song'
               onChange={this.inputChange}
             />

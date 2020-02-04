@@ -3,3 +3,29 @@
 
 .card-cnt {
 }
+
+p {
+  font-size: 4rem;
+  text-decoration: none;
+  color: black;
+  text-shadow: 1px 1px 0 alpha(white, 0.4);
+  font-family: 'Permanent Marker', cursive;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fun-hover {
+  background: #25b0a9;
+  border-radius: 1rem;
+}
+
+.each__lyric {
+  background-image: linear-gradient(to right, #25b0a9 50%, #fee603 50%);
+  background-position: 0;
+  background-size: 200%;
+  transition: all 0.5s;
+}
+
+.each__lyric:hover {
+  background-position: -100%;
+}

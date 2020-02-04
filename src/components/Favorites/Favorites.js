@@ -25,7 +25,16 @@ class Favorites extends Component {
               ></iframe>
               {/* <button onChange={() => }>Remove from favorites</button> */}
             </div>
-            <p onBlur={this.props.newLyrics}>{lyrics}</p>
+            <p className='fun-hover' onBlur={this.props.newLyrics}>
+              {lyrics.split('\n').map(val => {
+                return (
+                  <>
+                    <span className='each__lyric'>{val.trim()}</span>
+                    <br />
+                  </>
+                );
+              })}
+            </p>
           </div>
         </section>
       );

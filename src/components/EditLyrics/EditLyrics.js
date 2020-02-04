@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './EditLyrics.css';
 
 class EditLyrics extends Component {
   constructor() {
@@ -35,7 +36,16 @@ class EditLyrics extends Component {
               Delete Song
             </button>
           </div>
-          <p onBlur={this.props.newLyrics}>{lyrics}</p>
+          <p className='fun-hover' onBlur={this.props.newLyrics}>
+            {lyrics.split('\n').map(val => {
+              return (
+                <>
+                  <span className='each__lyric'>{val.trim()}</span>
+                  <br />
+                </>
+              );
+            })}
+          </p>
         </div>
       </section>
     );
